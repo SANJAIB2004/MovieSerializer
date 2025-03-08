@@ -12,14 +12,17 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 #to add the environment variables
 import environ
 
+env_file = os.path.join(BASE_DIR, '.env')
 env = environ.Env()
-environ.Env.read_env()  # Loads variables from .env file
+environ.Env.read_env(env_file=env_file)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
