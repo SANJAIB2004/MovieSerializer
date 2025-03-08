@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #to add the environment variables
 import environ
 
-env_file = os.path.join(BASE_DIR, '.env')
+env_file = os.path.join(BASE_DIR, 'mysite', '.env')
 env = environ.Env()
 environ.Env.read_env(env_file=env_file)
 
