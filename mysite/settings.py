@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
+#to add the environment variables
+import environ
+
+env = environ.Env()
+environ.Env.read_env()  # Loads variables from .env file
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,14 +88,17 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #     }
 # }
 
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'movie',  # Name of your MySQL database
-        'USER': 'root',  # MySQL username
-        'PASSWORD': 'pranav',  # MySQL password
-        'HOST': 'localhost',  # Host where MySQL is running
-        'PORT': '3306',  # Default MySQL port
+        'NAME': env("DATABASE_NAME"),
+        'USER': env("DATABASE_USER"),
+        'PASSWORD': env("DATABASE_PASSWORD"),
+        'HOST': env("DATABASE_HOST"),
+        'PORT': env("DATABASE_PORT"),
     }
 }
 
